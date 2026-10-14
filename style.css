@@ -1,6 +1,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-:root {
+:root { 
   --blurple: #5865f2;
   --blurple-dark: #4752c4;
   --blurple-glow: rgba(88,101,242,0.3);
