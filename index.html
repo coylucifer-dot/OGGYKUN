@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5865f2">
+  <title>Discord Autoposter — Rebuild</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Beranda">
+      <span class="logo">◉</span><span>Discord <b>Autoposter</b></span>
+    </a>
+    <div class="top-actions"><span class="demo-pill"><i></i> Mode demo lokal</span></div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">WORKSPACE</p><h1>Project kamu</h1></div>
+        <span class="count" id="project-count">0</span>
+      </div>
+      <div id="project-list" class="project-list"></div>
+      <button id="add-project" class="add-btn"><span>＋</span> Tambah Project Baru</button>
+      <div class="sidebar-note"><span class="note-icon">ⓘ</span><p>Project disimpan di browser perangkat ini. Hapus data browser berarti data lokal ikut hilang.</p></div>
+    </aside>
+
+    <section class="workspace">
+      <section class="welcome panel" id="welcome">
+        <div class="welcome-icon">✦</div>
+        <p class="eyebrow">SABDAPLAY REBUILD</p>
+        <h2>Atur pesanmu dengan mudah.</h2>
+        <p class="muted">Buat project untuk menyimpan channel, isi pesan, dan interval. Pilih project di sebelah kiri untuk mulai.</p>
+        <button id="welcome-add" class="primary-btn">＋ Buat Project Pertama</button>
+      </section>
+
+      <section id="editor" class="panel editor hidden">
+        <div class="editor-top">
+          <div><p class="eyebrow">KONFIGURASI PROJECT</p><h2 id="editor-title">Project</h2><div class="status-line"><span id="status-dot"></span><span id="status-text">Berhenti</span></div></div>
+          <button id="delete-project" class="danger-btn">Hapus project</button>
+        </div>
+
+        <div class="form-grid">
+          <label class="field"><span>Nama Project</span><input id="project-name" maxlength="70" placeholder="Contoh: Promo jualan"></label>
+          <label class="field"><span>Channel ID (opsional)</span><input id="channel-id" inputmode="numeric" placeholder="ID channel Discord"><small>Hanya disimpan lokal; demo ini tidak mengirim pesan.</small></label>
+          <label class="field full"><span>Teks Pesan</span>
+            <div class="emoji-bar" id="emoji-bar">
+              <button type="button">🔥</button><button type="button">🚀</button><button type="button">📢</button><button type="button">✅</button><button type="button">⭐</button><button type="button">📌</button><button type="button">🎉</button><button type="button">🎁</button><button type="button">💬</button><button type="button">✨</button>
+            </div>
+            <textarea id="message" rows="6" placeholder="Tulis pesan di sini..."></textarea>
+          </label>
+          <label class="field"><span>Interval (menit)</span><input id="delay" type="number" min="1" max="10080" value="5"><small>Demo hanya mensimulasikan jadwal; tidak mengirim pesan ke Discord.</small></label>
+        </div>
+
+        <div class="button-row">
+          <button id="save-config" class="secondary-btn">▣ Simpan Config</button>
+          <button id="start-stop" class="primary-btn">▶ Mulai Simulasi</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card"><span class="stat-label">Simulasi</span><strong id="stat-sent">0</strong><small>aktivitas</small></div>
+          <div class="stat-card"><span class="stat-label">Kesalahan</span><strong id="stat-failed">0</strong><small>demo lokal</small></div>
+          <div class="stat-card"><span class="stat-label">Hitung mundur</span><strong id="stat-countdown">--:--</strong><small>sampai jadwal demo</small></div>
+        </div>
+
+        <div class="log-panel">
+          <div class="log-head"><div><h3>Log Aktivitas</h3><p class="muted">Riwayat demo project ini</p></div><button id="clear-log" class="text-btn">Hapus log</button></div>
+          <div id="log-body" class="log-body"><p class="empty-log">Belum ada aktivitas.</p></div>
+        </div>
+        <div class="security-note"><b>Catatan keamanan:</b> Jangan masukkan Discord Auth Token/user token ke website. Untuk pengiriman sungguhan, gunakan bot resmi Discord dengan izin yang sesuai dan backend yang aman.</div>
+      </section>
+    </section>
+  </main>
+  <footer>Rebuild UI • berjalan lokal di browser • tidak terhubung ke Discord</footer>
+  <script src="app.js"></script>
+</body>
+</html>
